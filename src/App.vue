@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header />
+    <Form v-bind:searchResults="searchResults" v-on:set-search="setSearch" />
+    <Table v-bind:searchResults="searchResults"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header'
+import Form from './components/Form'
+import Table from './components/Table'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    Form,
+    Table
+  },
+  data() {
+    return {
+      searchResults: []
+    }
+  },
+  methods: {
+    setSearch(data) {
+      this.searchResults = data
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
